@@ -2,38 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <p id="demo"></p>
+    <p id="total"></p>
+    <p id="rat"></p>
+    <p id="text"></p>
+    <script>
+       let x=5;
+       let y=7;
+       let z=x+y ;
+       document.getElementById("demo").innerHTML = z;
+   
 
-<p id="demo"></p>
+ /* Kasus adalah
+    menghitung nilai mahasiswa dimana
+    nilai tugas = 10 persen
+    nilai absen = 20 persen
+    nilai quis  = 5 persen
+    nilai uts   = 20 persen
+    nilai uas   = 35 persen
+    total nilai
+    nilai rata-rata 
+    */
 
-<script>
-let x = 5;
-let y = 2;
-let z = x + y;
-document.getElementById("demo").innerHTML = z; 
+    let text, nt,na,nq,nut, nuas, tot, rat;
+    nt=70;
+    na=78;
+    nq=89;
+    nut=50;
+    nuas=75;
 
-let tugas = 30;
-let absen = 20;
-let kuis = 7;
-let uts = 20;
-let uas = 35;
+    tot=(nt*0.1)+(na*0.2)+(nq*0.05)+(nut*0.20)+(nuas*0.35);
+    rat=tot/5;
 
-let totalNilai = tugas + absen + kuis + uts + uas;
+    if (tot > 90) {
+        text = "A";
+    }
+    else if (tot > 80) {
+        text = "B";
+    }
+    else if (tot > 70) {
+        text = "C";
+    }
+    else if (tot > 60) {
+        text = "D";
+    }
+    else {
+        text = "E";
+    }
 
-let rataRata = totalNilai / 5;
+    document.getElementById("total").innerHTML = "Total Nilai " +tot;
+    document.getElementById("rat").innerHTML = "Nilai Rata-rata " +rat;
+    document.getElementById("text").innerHTML = "Keterangan " +text;
+    
 
-document.write("Nilai Tugas = " + tugas + "<br>");
-document.write("Nilai Absen = " + absen + "<br>");
-document.write("Nilai Kuis = " + kuis + "<br>");
-document.write("Nilai UTS = " + uts + "<br>");
-document.write("Nilai UAS = " + uas + "<br>");
-document.write("Nilai Nilai = " + totalNilai + "<br>");
-document.write("Nilai Rata-rata = " + rataRata + "<br>");
+ </script>
 
-</script>
-
+    setelah itu push ke git lalu kirim link git ke grub
 </body>
 </html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Data Nilai Mahasiswa</title>
+    <style>
+        table {
+            width: 30%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 3px solid #400707;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Transkrip Nilai Mahasiswa</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Mata Kuliah</th>
+                <th>Tugas</th>
+                <th>Absen</th>
+                <th>Quis</th>
+                <th>UTS</th>
+                <th>UAS</th>
+                <th>Nilai Akhir</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody id="tabel-nilai">
+            
+        </tbody>
+    </table>
+
+    <h3 id="ipk-info"></h3>
+
+    <script>
+       
+        let daftarMatkul = [
+            { nama: "Pemrograman Web 1", nt: 80, na: 90, nq: 85, nut: 75, nuas: 80 },
+            { nama: "Basis Data", nt: 90, na: 80, nq: 75, nut: 65, nuas: 70 },
+            { nama: "Multimedia", nt: 85, na: 95, nq: 90, nut: 80, nuas: 88 },
+            { nama: "Jaringan Komputer", nt: 90, na: 85, nq: 80, nut: 70, nuas: 75 },
+            { nama: "Matematika Diskret", nt: 88, na: 90, nq: 85, nut: 82, nuas: 95 }
+        ];
+
+        let tbody = document.getElementById("tabel-nilai");
+        let totalNilaiKeseluruhan = 0;
+        let htmlContent = "";
+
+        for (let i = 0; i < daftarMatkul.length; i++) {
+            let m = daftarMatkul[i];
+            
+           
+            let nilaiAkhir = (m.nt * 0.10) + (m.na * 0.20) + (m.nq * 0.05) + (m.nut * 0.20) + (m.nuas * 0.35);
+            
+            totalNilaiKeseluruhan += nilaiAkhir;
+
+          
+            let status = "";
+            let kelasCSS = "";
+            if (nilaiAkhir >= 75) {
+                status = "Lulus";
+                kelasCSS = "lulus";
+            } else {
+                status = "Gagal";
+                kelasCSS = "gagal";
+            }
+
+          
+            htmlContent += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td style="text-align: left;">${m.nama}</td>
+                    <td>${m.nt}</td>
+                    <td>${m.na}</td>
+                    <td>${m.nq}</td>
+                    <td>${m.nut}</td>
+                    <td>${m.nuas}</td>
+                    <td><b>${nilaiAkhir.toFixed(2)}</b></td>
+                    <td class="${kelasCSS}">${status}</td>
+                </tr>
+            `;
+        }
+
+        tbody.innerHTML = htmlContent;
+
+        
+        let rataRataAkhir = totalNilaiKeseluruhan / daftarMatkul.length;
+        document.getElementById("ipk-info").innerHTML = `Rata-rata Nilai Keseluruhan: <b>${rataRataAkhir.toFixed(2)}</b>`;
+    </script>
+
+</body>
+</html>

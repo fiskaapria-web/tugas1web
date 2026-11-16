@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 1. Belanja di Minimarket</title>
+</head>
+<body>
+
+<h2 id="belanja"></h2>
+<p id="brg"></p>
+<p id="barang1"></p>
+<p id="barang2"></p>
+<p id="barang3"></p>
+<p id="barang4"></p>
+<p id="barang5"></p>
+
+<hr>
+
+<p id="subtotal"></p>
+<p id="total"></p>
+<p id="keterangan"></p>
+<p id="diskon"></p>
+
+<script>
+    let mie = 3000 * 2;
+    let yogurt = 5000 * 3;
+    let roti = 7000 * 5;
+    let minuman = 6000 * 2;
+    let snack = 2000 * 6;
+
+    let subtotal = mie + yogurt + roti + minuman + snack;
+    let diskon = 0;
+    let totalAkhir = 0;
+    let keterangan  = "";
+
+
+
+   if (subtotal > 50000) {
+
+    diskon = subtotal * 0.10;
+    totalAkhir = subtotal - diskon;
+    keterangan = "Anda dapat diskon 10%";
+   } else {
+    totalAkhir = subtotal;
+    keterangan = "Belanja kurang dari 50000 tidak dapat bonus";
+   }
+    document.getElementById("belanja").innerHTML = "Belanja di minimarket";
+    document.getElementById("barang1").innerHTML = "1. Mie rp 3000 x 2 = Rp" + mie;
+    document.getElementById("barang2").innerHTML = "2. Yogurt rp 5000 x 3 = Rp" + yogurt;
+    document.getElementById("barang3").innerHTML = "3. Roti rp 7000 x 5 = Rp" + roti;
+    document.getElementById("barang4").innerHTML = "4. Minuman rp  6000 x 2 = Rp" + minuman;
+    document.getElementById("barang5").innerHTML = "5. Snack rp 2000 x 6 = Rp" + snack;
+
+    document.getElementById("subtotal").innerHTML = "Subtotal : Rp " + subtotal;
+    document.getElementById("diskon").innerHTML = "Potongan Harga : Rp" + diskon;
+    document.getElementById("total").innerHTML = "<b> Total Bayar: Rp " + totalAkhir + "</b>";
+    document.getElementById("keterangan").innerHTML = "status: " + keteranngan;
+</script>
+
+</body>
+</html>

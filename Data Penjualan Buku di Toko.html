@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasus 3: Data Penjualan Buku di Toko</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 3px solid #0b0b0b;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Penjualan Buku di Toko</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Buku</th>
+                <th>Harga Satuan</th>
+                <th>Terjual</th>
+                <th>Pendapatan</th>
+            </tr>
+        </thead>
+        <tbody id="tabel-penjualan">
+            
+        </tbody>
+    </table>
+
+    <hr>
+    <p id="total_terjual"></p>
+    <p id="total_pendapatan"></p>
+    <p id="predikat"></p>
+
+    <script>
+        
+        let daftarBuku = [
+            { nama: "Novel", harga: 60000, terjual: 15 },
+            { nama: "Komik", harga: 35000, terjual: 25 },
+            { nama: "Buku Pelajaran", harga: 85000, terjual: 10 }
+        ];
+
+        
+        let htmlContent = "";
+        let totalBukuTerjual = 0;
+        let totalPendapatan = 0;
+
+
+        for (let i = 0; i < daftarBuku.length; i++) {
+            let buku = daftarBuku[i];
+            let pendapatanPerBuku = buku.harga * buku.terjual;
+
+
+            totalBukuTerjual += buku.terjual;
+            totalPendapatan += pendapatanPerBuku;
+
+           
+            htmlContent += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td style="text-align: left;">${buku.nama}</td>
+                    <td>Rp ${buku.harga.toLocaleString('id-ID')}</td>
+                    <td>${buku.terjual} Pcs</td>
+                    <td>Rp ${pendapatanPerBuku.toLocaleString('id-ID')}</td>
+                </tr>
+            `;
+        }
+
+       
+        document.getElementById("tabel-penjualan").innerHTML = htmlContent;
+
+      
+        let predikat = "";
+        if (totalPendapatan > 2000000) {
+            predikat = "Target Tercapai: Toko Sangat Ramai!";
+        } else {
+            predikat = "Target Belum Tercapai: Toko Cukup Sepi.";
+        }
+
+      
+        document.getElementById("total_terjual").innerHTML = `<b>Total Buku Terjual:</b> ${totalBukuTerjual} Pcs`;
+        document.getElementById("total_pendapatan").innerHTML = `<b>Total Pendapatan:</b> Rp ${totalPendapatan.toLocaleString('id-ID')}`;
+        document.getElementById("predikat").innerHTML = `<b>Status Toko:</b> ${predikat}`;
+    </script>
+</body>
+</html>
